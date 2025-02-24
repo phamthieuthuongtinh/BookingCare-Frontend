@@ -2,19 +2,38 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './userManage.scss';
-import { getAllUser } from '../../services/userService';
+import { getAllUser, createNewUserService } from '../../services/userService';
+import ModalUser from './ModalUser';
 class UserManage extends Component {
 
     constructor(props) {
         //init state
         super(props);
         this.state = {
-            arrUsers: []
+            arrUsers: [],
+            isOpenModal: false,
         }
     }
 
     async componentDidMount() {
         //setstate
+        await this.getAllUsers();
+    }
+
+
+    handleAddNewUser = () => {
+        this.setState({
+            isOpenModal: true
+        })
+    }
+
+
+    toggleUserModal = () => {
+        this.setState({
+            isOpenModal: !this.state.isOpenModal,
+        })
+    }
+    getAllUsers = async () => {
         let response = await getAllUser('ALL');
         if (response && response.errCode === 0) {
             this.setState({
@@ -22,15 +41,41 @@ class UserManage extends Component {
             })
         }
     }
+    createNewUser = async (data) => {
+        // console.log('respone create new user', data);
+        try {
 
+            let response = await createNewUserService(data);
+            if (response && response.errCode !== 0) {
+                alert(response.errMessage);
+            } else {
+                await this.getAllUsers();
+                this.setState({
+                    isOpenModal: false
+                })
+            }
+            console.log('respone create new user', response);
+        } catch (error) {
+            console.log(error);
+        }
 
+    }
     render() {
-        console.log('check render', this.state)
+        // console.log('check render', this.state)
         let arrUsers = this.state.arrUsers;
         return (
             <div className='users-container'>
+                <ModalUser
+
+                    isOpen={this.state.isOpenModal}
+                    toggleFromParent={this.toggleUserModal}
+                    createNewUser={this.createNewUser}
+                />
                 <div className='title text-center'>
                     Manage Users
+                </div>
+                <div className='mx-4'>
+                    <button className='btn btn-primary px-3' onClick={() => this.handleAddNewUser()}><i className='fas fa-plus px-1'> Add new user </i></button>
                 </div>
                 <div className='users-table mt-5 mx-4'>
                     <table id="customers">
