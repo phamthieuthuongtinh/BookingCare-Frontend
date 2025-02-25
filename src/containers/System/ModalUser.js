@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { connect } from 'react-redux';
+
+import { emitter } from '../../utils/emitter';
 class ModalUser extends Component {
 
     constructor(props) {
@@ -14,8 +16,19 @@ class ModalUser extends Component {
             lastName: '',
             address: '',
         }
+        this.listenToEmitter();
     }
-
+    listenToEmitter() {
+        emitter.on("EVENT_CLEAR_MODAL_DATA", () => {
+            this.setState({
+                email: '',
+                password: '',
+                firstName: '',
+                lastName: '',
+                address: '',
+            })
+        })
+    }
     componentDidMount() {
     }
     toggle = () => {
