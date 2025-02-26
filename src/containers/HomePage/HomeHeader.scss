@@ -1,5 +1,5 @@
 .home-header-container{
-    height: 60px;
+    height: 70px;
     width: 100%;
     padding: 7px;
     .home-header-content{
@@ -41,10 +41,45 @@
         .right-content{
             display: flex;
             width: 25%;
-            justify-content: space-around;;
+            justify-content: flex-end;;
             align-items: center;
+            
             .support{
                 font-size: 20px;
+                margin-right: 50px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+            .language-vi{
+                cursor: pointer;
+                opacity: 0.3;
+                margin: 0 10px;
+                font-size: 18px;
+                font-weight: 500;
+                &:hover{
+                    // color: orange;
+                    opacity: 1;
+                }
+                &.active{
+                    opacity: 1;
+                    color: orange;
+                }
+            }
+            .language-en{
+                &:hover{
+                    // color: blue;
+                    opacity: 1;
+                }
+                cursor: pointer;
+                margin: 0 10px;
+                opacity: 0.3;
+                font-size: 18px;
+                font-weight: 500;
+                &.active{
+                    opacity: 1;
+                    color: blue;
+                }
             }
         }
     }
@@ -52,21 +87,23 @@
 
 
 .home-header-banner{
-    background: url('../../assets/images/banne2.jpg') ;
-    height: 521px;
+    
+    background-image: url('../../assets/images/banne2.jpg');
+    height: 621px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
+    
     .content-up{
-        height: 50%;
+        background-image:linear-gradient(rgba(126,126,126,0.25),rgba(255,255,255,0.1)) ;
+        height: 70%;
         .title1{
             text-shadow: 1px 1px 1px #333;
             color: #fff;
             font-size: 45px;
             text-align: center;
             margin-bottom: 10px;
-            margin-top: 20px;
+            // margin-top: 20px;
         }
     
         .title2{
@@ -100,31 +137,35 @@
     }
 
     .content-down{
-        height: 50%;
-        
+        height: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        background-image:linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.9),rgba(255,255,255,1)) ;
+        padding-bottom: 15px;
         .options{
             display: flex;
             gap: 50px;
-            justify-content: center;
+            
             .option-child{
                 width: 125px;
                 text-align: center;
                 .icon-child{
-                    width: 100px;
-                    height: 100px;
+                    width: 80px;
+                    height: 80px;
                     border-radius: 50%;
                     text-align: center;
                     padding: 15px;
                     background: white;
                     margin: 0 auto;
-                    font-size: 50px;
+                    font-size: 35px;
                     color: #49cbe2;
                 }
                 .text-child{
                     font-size: 20px;
                     text-shadow: 1px 1px 1px #333;
-                    color: white;
-                    font-weight: 530;
+                    color: #333;
+                    font-weight: 400;
                     padding: 5px;
                     cursor: pointer;
                     &:hover{
