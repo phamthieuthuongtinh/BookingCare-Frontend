@@ -10,11 +10,14 @@
         .left-content{
             width: 25%;
             display: flex;
-            .header-logo{
-                margin-left: 20px;
-                cursor: pointer;
-            }
+            
            align-items: center;
+           .header-logo{
+               
+            margin-left: 20px;
+            cursor: pointer;
+            
+        }
            i{
             font-size: 27px;
             color: grey;
