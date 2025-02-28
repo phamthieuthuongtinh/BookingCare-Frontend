@@ -1,6 +1,6 @@
 .slick-prev{
     left: -35px !important;
-    z-index: 1000;
+    z-index: 900;
     width: 48px !important;
     height: 44px !important;
     background: #fff !important;
@@ -20,7 +20,7 @@
 
 .slick-next{
     right: -30px !important;
-    z-index: 1000;
+    z-index: 900;
     width: 48px !important;
     height: 44px !important;
     background: #fff !important;
@@ -39,6 +39,12 @@
         background: #f5f5f5;
     }
     &.section-outstanding-doctor{
+        background: #f5f5f5;
+    }
+    &.section-about{
+        margin: 0 70px;
+       padding: 20px;
+        height: 500px;
         background: #f5f5f5;
     }
     .section-body{
@@ -132,4 +138,35 @@
         padding: 5px;
         border: 1px solid grey;
     }
+}
+.home-footer{
+    text-align: center;
+    padding-top: 10px;
+    a{
+         text-decoration: none;
+    }
+   
+}
+.section-about{
+    .section-about-header{
+        font-size: 20px;
+        padding: 15px;
+        font-weight: 600;
+    }
+    .section-about-content{
+     display: flex;
+      .content-left{
+        width: 50%;
+      }
+      .content-right{
+        p{
+            font-size: 25px;
+            font-style: italic;
+        }
+        
+        width: 50%;
+      }
+
+    }
+
 }

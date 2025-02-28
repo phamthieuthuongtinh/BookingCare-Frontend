@@ -1,4 +1,8 @@
 .home-header-container{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
     height: 70px;
     width: 100%;
     padding: 7px;

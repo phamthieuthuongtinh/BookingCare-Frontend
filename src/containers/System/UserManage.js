@@ -139,35 +139,40 @@ class UserManage extends Component {
                 </div>
                 <div className='users-table mt-5 mx-4'>
                     <table id="customers">
-                        <tr>
-                            <th>Email</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Address</th>
-                            <th>Action</th>
-                        </tr>
-                        {arrUsers && arrUsers.map((item, index) => {
-                            return (
-                                <tr>
-                                    <td>{item.email}</td>
-                                    <td>{item.firstName}</td>
-                                    <td>{item.lastName}</td>
-                                    <td>{item.address}</td>
-                                    <td>
-                                        <button className='btn-edit' onClick={() => { this.handleEditUser(item) }}><i className='fas fa-pencil-alt'></i></button>
-                                        <button className='btn-delete' onClick={() => {
-                                            if (window.confirm("Bạn có chắc muốn xóa không?")) {
-                                                this.handleDeleteUser(item);
-                                            }
-                                        }}><i className='fas fa-trash'></i></button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {arrUsers && arrUsers.map((item, index) => {
+                                return (
+                                    <tr key={item.id
+                                    }>
+                                        <td>{item.email}</td>
+                                        <td>{item.firstName}</td>
+                                        <td>{item.lastName}</td>
+                                        <td>{item.address}</td>
+                                        <td>
+                                            <button className='btn-edit' onClick={() => { this.handleEditUser(item) }}><i className='fas fa-pencil-alt'></i></button>
+                                            <button className='btn-delete' onClick={() => {
+                                                if (window.confirm("Bạn có chắc muốn xóa không?")) {
+                                                    this.handleDeleteUser(item);
+                                                }
+                                            }}><i className='fas fa-trash'></i></button>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
 
                     </table>
                 </div>
-            </div>
+            </div >
         );
     }
 
