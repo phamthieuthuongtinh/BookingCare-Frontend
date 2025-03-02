@@ -51,5 +51,9 @@
         "position":"Position",
         "save":"Save",
         "edit":"Update"
+    },
+    "homepage":{
+        "see-more":"See More",
+        "outstanding-doctor":"Outstanding Doctors of the Week"
     }
 }

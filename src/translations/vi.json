@@ -52,5 +52,9 @@
         "position":"Chức danh",
         "save":"Lưu",
         "edit":"Lưu thay đổi"
+    },
+    "homepage":{
+        "see-more":"Xem thêm",
+        "outstanding-doctor":"Bác sĩ nổi bật tuần qua"
     }
 }
