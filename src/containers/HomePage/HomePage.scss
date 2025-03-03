@@ -138,9 +138,13 @@
         margin-bottom: 10px;
         
     }
-    .customize-border{
-        padding: 5px;
-        border: 1px solid grey;
+    .section-customize{
+        .customize-border{
+            padding: 5px;
+            border: 1px solid grey;
+        }
+    
+        cursor: pointer;
     }
 }
 .home-footer{

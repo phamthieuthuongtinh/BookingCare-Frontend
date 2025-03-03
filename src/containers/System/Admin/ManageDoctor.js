@@ -7,7 +7,8 @@ import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 import "./ManageDoctor.scss";
 import Select from 'react-select';
-import { languages } from '../../../utils';
+import { CRUD_ACTIONS, languages } from '../../../utils';
+import { getDetailInforDoctor } from '../../../services/userService';
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -23,7 +24,8 @@ class ManageDoctor extends Component {
             contentHTML: '',
             selectedOption: '',
             description: '',
-            listDoctors: []
+            listDoctors: [],
+            hasOldData: false
         }
     }
     componentDidMount() {
@@ -67,10 +69,26 @@ class ManageDoctor extends Component {
         })
         console.log('handleEditorChange', html, text);
     }
-    handleChange = (selectedOption) => {
-        this.setState({ selectedOption }, () =>
-            console.log(`Option selected:`, this.state.selectedOption)
-        );
+    handleChangeSelect = async (selectedOption) => {
+        this.setState({ selectedOption });
+        let res = await getDetailInforDoctor(selectedOption.value)
+        if (res && res.errCode === 0 && res.data && res.data.Markdown) {
+            let markdown = res.data.Markdown;
+            this.setState({
+                contentHTML: markdown.contentHTML,
+                contentMarkdown: markdown.contentMarkdown,
+                description: markdown.description,
+                hasOldData: true
+            })
+        } else {
+            this.setState({
+                contentHTML: '',
+                contentMarkdown: '',
+                description: '',
+                hasOldData: false
+            })
+        }
+        // console.log('check select doctor', res);
     };
     handleOnChangDesc = (event) => {
         this.setState({
@@ -78,16 +96,19 @@ class ManageDoctor extends Component {
         })
     }
     handleSaveContentMarkdown = () => {
+        let { hasOldData } = this.state;
+
         this.props.saveDetailDoctor({
             contentHTML: this.state.contentHTML,
             contentMarkdown: this.state.contentMarkdown,
             description: this.state.description,
-            doctorId: this.state.selectedOption.value
+            doctorId: this.state.selectedOption.value,
+            action: hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.EDIT
         })
     }
     render() {
-        console.log('check state save', this.state.listDoctors)
-        const { selectedOption } = this.state;
+        // console.log('check state save', this.state.listDoctors)
+        const { selectedOption, hasOldData } = this.state;
         return (
 
             <div className='manage-doctor-container'>
@@ -97,7 +118,7 @@ class ManageDoctor extends Component {
                         <label>Chọn bác sĩ</label>
                         <Select
                             value={selectedOption}
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeSelect}
                             options={this.state.listDoctors}
 
                         />
@@ -110,9 +131,17 @@ class ManageDoctor extends Component {
 
                 </div>
                 <div className='manage-doctor-editor'>
-                    <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={this.handleEditorChange} />
+                    <MdEditor
+                        style={{ height: '500px' }}
+                        renderHTML={text => mdParser.render(text)}
+                        onChange={this.handleEditorChange}
+                        value={this.state.contentMarkdown}
+                    />
                 </div>
-                <button onClick={() => this.handleSaveContentMarkdown()} className='save-content-doctor'>Lưu</button>
+
+                <button onClick={() => this.handleSaveContentMarkdown()} className={hasOldData === true ? 'update-content-doctor' : 'save-content-doctor'}>
+                    {hasOldData === true ? <span>Cập nhật</span> : <span>Lưu</span>}
+                </button>
             </div>
 
         );

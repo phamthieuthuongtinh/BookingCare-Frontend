@@ -5,12 +5,13 @@
     background: white;
     height: 70px;
     width: 100%;
-    padding: 7px;
+  
     .home-header-content{
+        padding: 7px;
         width: 100%;
         height: 100%;
         display: flex;
-
+        border-bottom:3px solid #ddd ;
         .left-content{
             width: 25%;
             display: flex;

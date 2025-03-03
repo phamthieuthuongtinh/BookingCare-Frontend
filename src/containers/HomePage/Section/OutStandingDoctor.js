@@ -5,9 +5,10 @@ import * as actions from "../../../store/actions";
 import { FormattedMessage } from 'react-intl';
 import { languages } from '../../../utils';
 // import "./OutStandingDoctor.scss";
-
+import { withRouter } from 'react-router';
 
 class OutStandingDoctor extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
@@ -23,6 +24,11 @@ class OutStandingDoctor extends Component {
     }
     componentDidMount() {
         this.props.loadTopDoctors();
+    }
+    handleViewDetailDoctor = (doctor) => {
+        console.log('check view info', doctor);
+        this.props.history.push(`/detail-doctor/${doctor.id}`)
+
     }
     render() {
         // console.log('chech topDoctorRedux', this.props.topDoctorRedux)
@@ -47,10 +53,10 @@ class OutStandingDoctor extends Component {
                                 if (item.image) {
                                     imageBase64 = new Buffer(item.image, 'base64').toString('binary');
                                 }
-                                let nameVi = `${item.positionData.ValueVi}, ${item.firstName} ${item.lastName}`;
+                                let nameVi = `${item.positionData.ValueVi}, ${item.lastName} ${item.firstName}`;
                                 let nameEn = `${item.positionData.valueEn} ${item.firstName} ${item.lastName}`
                                 return (
-                                    <div className='section-customize' key={index}>
+                                    <div className='section-customize' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
                                         <div className='customize-border'>
                                             <div className='author-background'>
                                                 <div className='bg-img section-outstanding-doctor' style={{ backgroundImage: `url(${imageBase64})` }}></div>
@@ -88,4 +94,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));
