@@ -24,7 +24,7 @@
     },
     "menu": {
         "admin":{
-            "manage-user":"Quản lý người dùng",
+            "manage-user":"Người dùng",
             "manage-doctor":"Quản lý bác sĩ",
             "manage-admin":"Quản lý admin",
             "crud":"CRUD User",
@@ -35,6 +35,9 @@
             "manage-specialty":"Quản lý chuyên khoa",
              "handbook":"Cẩm nang",
             "manage-handbook":"Quản lý cẩm nang"
+        },
+        "doctor":{
+            "manage-schedule":"Quản lý kế hoạch khám bệnh"
         }
         
     },
@@ -56,5 +59,12 @@
     "homepage":{
         "see-more":"Xem thêm",
         "outstanding-doctor":"Bác sĩ nổi bật tuần qua"
+    },
+    "manage-schedule":{
+        "title":"Quản lý kế hoạch khám bệnh của bác sĩ",
+        "choose-doctor":"Chọn bác sĩ",
+        "choose-date":"Chọn ngày",
+        "save":"Lưu"
     }
+    
 }

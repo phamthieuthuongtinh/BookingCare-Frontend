@@ -208,7 +208,31 @@ export const saveDetailDoctor = (data) => {
         }
     }
 }
-
+export const fetchAllScheduleTime = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("TIME");
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.GET_ALLCODE_SCHEDULE_TIME_SUCCESS,
+                    dataTime: res.data
+                })
+                // dispatch(fetchTopDoctorSuccess(res.users.reverse()));
+            } else {
+                dispatch({
+                    type: actionTypes.GET_ALLCODE_SCHEDULE_TIME_FAILED,
+                })
+                // dispatch(fetchTopDoctorFailed());
+            }
+        } catch (error) {
+            toast.error("Fetch all doctors error", error)
+            dispatch({
+                type: actionTypes.GET_ALLCODE_SCHEDULE_TIME_FAILED,
+            })
+            console.log('fetchTopDoctorFailed error', error)
+        }
+    }
+}
 
 
 export const saveUserSuccess = () => ({
