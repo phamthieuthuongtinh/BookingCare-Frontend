@@ -16,7 +16,9 @@
         .btn-schedule{
             padding: 5px 13px;
             border: solid gray;
-            
+            &.active{
+                background-color: orange;
+            }
         }
     }
     .btn-save-schedule{
