@@ -65,6 +65,28 @@
         "choose-doctor":"Chọn bác sĩ",
         "choose-date":"Chọn ngày",
         "save":"Lưu"
+    },
+    "patient":{
+        "detail-doctor":{
+            "schedule":"Lịch khám",       
+            "no-schedule":"Bác sĩ không có lịch làm việc trong ngày này. Vui lòng chọn ngày khác!",
+            "choose":"Chọn ",
+            "book-free":" và đặt (miễn phí)"
+        }
+    },
+    "admin":{
+        "manage-doctor":{
+            "title":"Thêm thông tin bác sĩ",
+            "choose-doctor":"Chọn bác sĩ",
+            "intro":"Giới thiệu bác sĩ",
+            "save":"Lưu",
+            "update":"Cập nhật",
+            "choose-price":"Chọn giá (vnd)",
+            "choose-province":"Chọn tỉnh thành",
+            "choose-payment":"Chọn phương thức thanh toán",
+            "nameclinic":"Tên phòng khám",
+            "addressclinic":"Địa chỉ phòng khám",
+            "note":"Ghi chú"
+        }
     }
-    
 }
