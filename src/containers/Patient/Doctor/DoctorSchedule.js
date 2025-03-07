@@ -74,6 +74,7 @@ class DoctorSchedule extends Component {
             this.setState({
                 allAvalableTime: res.data ? res.data : []
             })
+            console.log(allDays)
         }
     }
     handleOnChangeSelect = async (event) => {
