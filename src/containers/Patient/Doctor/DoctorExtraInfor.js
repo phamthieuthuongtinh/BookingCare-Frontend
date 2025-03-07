@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Select from 'react-select';
 import './DoctorExtraInfor.scss';
-import { getDetailInforDoctor } from '../../../services/userService';
+import { getExtraInforDoctorByIdService } from '../../../services/userService';
 import { languages } from '../../../utils';
-import moment from 'moment';
-import localization from 'moment/locale/vi';
-import { getScheduleDoctorByDateService } from '../../../services/userService';
+import NumberFormat from 'react-number-format';
+
+
 import { FormattedMessage } from 'react-intl';
 class DoctorExtraInfor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isShowDetailInfor: false
+            isShowDetailInfor: false,
+            extraInfor: {}
         }
     }
     componentDidMount() {
@@ -20,18 +21,17 @@ class DoctorExtraInfor extends Component {
 
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidUpdate(prevProps, prevState, snapshot) {
 
         if (this.props.language !== prevProps.language) {
 
         }
         if (this.props.doctorIdFromParent !== prevProps.doctorIdFromParent) {
-            //     let allDays = this.getArrDays(this.props.language);
-            //     let res = await getScheduleDoctorByDateService(this.props.doctorIdFromParent, allDays[0].value)
-            //     this.setState({
-            //         allAvalableTime: res.data ? res.data : []
-            //     })
-            //     console.log(allDays)
+            let data = await getExtraInforDoctorByIdService(this.props.doctorIdFromParent);
+            if (data && data.errCode === 0)
+                this.setState({
+                    extraInfor: data.data
+                })
         }
 
     }
@@ -41,38 +41,80 @@ class DoctorExtraInfor extends Component {
         })
     }
     render() {
+
         let { language } = this.props;
-        let { isShowDetailInfor } = this.state;
+        let { isShowDetailInfor, extraInfor } = this.state;
+        console.log(extraInfor)
         return (
             <React.Fragment>
                 <div className='doctor-extra-infor-container'>
                     <div className='content-up'>
-                        <div className='text-address'>Địa chỉ phòng khám</div>
-                        <div className="name-clinic">Phòng khám Chuyên khoa Da liễu</div>
-                        <div className='detail-addr'>207, Phố Huế, Hai Bà Trưng, Hà Nội</div>
+                        <div className='text-address'><FormattedMessage id="patient.extra-infor-doctor.text-address" /></div>
+                        <div className="name-clinic">{extraInfor && extraInfor.nameClinic ? extraInfor.nameClinic : ''}</div>
+                        <div className='detail-addr'>{extraInfor && extraInfor.addressClinic ? extraInfor.addressClinic : ''}</div>
                     </div>
+
                     <div className='content-down'>
                         {isShowDetailInfor === false &&
-                            <div className='short-infor'>GIÁ  KHÁM 250.000đ.<span onClick={() => this.showHideDetailInfor(true)}> Xem chi tiết</span></div>
+                            <div className='short-infor'><FormattedMessage id="patient.extra-infor-doctor.price" />
+                                {extraInfor && extraInfor.priceTypeData && language === languages.VI &&
+                                    <NumberFormat
+                                        className='currency'
+                                        value={extraInfor.priceTypeData.valueVi}
+                                        displayType='text'
+                                        thousandSeparator={true}
+                                        suffix='vnđ'
+                                    />
+                                }
+                                {extraInfor && extraInfor.priceTypeData && language === languages.EN &&
+                                    <NumberFormat
+                                        className='currency'
+                                        value={extraInfor.priceTypeData.valueEn}
+                                        displayType='text'
+                                        thousandSeparator={true}
+                                        suffix='$' />
+                                }.
+                                <span className='detail' onClick={() => this.showHideDetailInfor(true)}><FormattedMessage id="patient.extra-infor-doctor.see-detail" /></span>
+                            </div>
                         }
                         {isShowDetailInfor === true &&
                             <>
                                 <div className='title-price'>
-                                    GIÁ KHÁM:
+                                    <FormattedMessage id="patient.extra-infor-doctor.price" />
+
                                 </div>
                                 <div className='body-price'>
                                     <div className='detail-price'>
-                                        <span className='left'>Giá Khám</span>
-                                        <span className='right'>250.000đ</span>
+                                        <span className='left'><FormattedMessage id="patient.extra-infor-doctor.price" /></span>
+                                        <span className='right'>
+                                            {extraInfor && extraInfor.priceTypeData && language === languages.VI &&
+                                                <NumberFormat
+                                                    className='currency'
+                                                    value={extraInfor.priceTypeData.valueVi}
+                                                    displayType='text'
+                                                    thousandSeparator={true}
+                                                    suffix='vnđ'
+                                                />
+                                            }
+                                            {extraInfor && extraInfor.priceTypeData && language === languages.EN &&
+                                                <NumberFormat
+                                                    className='currency'
+                                                    value={extraInfor.priceTypeData.valueEn}
+                                                    displayType='text'
+                                                    thousandSeparator={true}
+                                                    suffix='$' />
+                                            }
+
+                                        </span>
                                     </div>
 
-                                    <div className='note'>Được ưu tiên khám trước khi đặt qua HealCare. Giá khám cho người nước ngoài là 30 USD</div>
+                                    <div className='note'> {extraInfor && extraInfor.note ? extraInfor.note : ''}</div>
 
 
                                 </div>
-                                <div className='payment'>Người khám có thể thanh toán trực tiếp bằng tiền mặt hoặc quẹt thẻ</div>
+                                <div className='payment'><FormattedMessage id="patient.extra-infor-doctor.payment" /> {extraInfor && extraInfor.paymentTypeData && language === languages.VI ? extraInfor.paymentTypeData.valueVi : extraInfor.paymentTypeData.valueEn}</div>
                                 <div className='hide-price'>
-                                    <span onClick={() => this.showHideDetailInfor(false)}>Ẩn bảng giá</span>
+                                    <span onClick={() => this.showHideDetailInfor(false)}><FormattedMessage id="patient.extra-infor-doctor.hide-price" /></span>
                                 </div>
 
 

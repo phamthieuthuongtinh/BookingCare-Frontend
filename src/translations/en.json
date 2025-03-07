@@ -71,6 +71,13 @@
             "no-schedule":"The doctor does not have a schedule on this day. Please choose another day!",
             "choose":"Choose ",
             "book-free":" and book (free)"
+        },
+        "extra-infor-doctor":{
+            "text-address":"Address Clinic",
+            "price":"Price:",
+            "see-detail":"See detail",
+            "payment":"Patient can checkout by:",
+            "hide-price":"Hide price table"
         }
     },
     "admin":{

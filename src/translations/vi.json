@@ -72,7 +72,15 @@
             "no-schedule":"Bác sĩ không có lịch làm việc trong ngày này. Vui lòng chọn ngày khác!",
             "choose":"Chọn ",
             "book-free":" và đặt (miễn phí)"
+        },
+        "extra-infor-doctor":{
+            "text-address":"Địa chỉ phòng khám",
+            "price":"GIÁ KHÁM:",
+            "see-detail":"Xem chi tiết",
+            "payment":"Người khám có thể thanh toán bằng:",
+            "hide-price":"Ẩn bảng giá"
         }
+
     },
     "admin":{
         "manage-doctor":{
