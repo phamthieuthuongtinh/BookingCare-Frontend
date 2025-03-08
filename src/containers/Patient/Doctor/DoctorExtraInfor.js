@@ -87,7 +87,7 @@ class DoctorExtraInfor extends Component {
                                     <div className='detail-price'>
                                         <span className='left'><FormattedMessage id="patient.extra-infor-doctor.price" /></span>
                                         <span className='right'>
-                                            {extraInfor && extraInfor.priceTypeData && language === languages.VI &&
+                                            {extraInfor && extraInfor.priceTypeData && language === languages.VI ?
                                                 <NumberFormat
                                                     className='currency'
                                                     value={extraInfor.priceTypeData.valueVi}
@@ -95,14 +95,16 @@ class DoctorExtraInfor extends Component {
                                                     thousandSeparator={true}
                                                     suffix='vnđ'
                                                 />
+                                                : ''
                                             }
-                                            {extraInfor && extraInfor.priceTypeData && language === languages.EN &&
+                                            {extraInfor && extraInfor.priceTypeData && language === languages.EN ?
                                                 <NumberFormat
                                                     className='currency'
                                                     value={extraInfor.priceTypeData.valueEn}
                                                     displayType='text'
                                                     thousandSeparator={true}
                                                     suffix='$' />
+                                                : ''
                                             }
 
                                         </span>

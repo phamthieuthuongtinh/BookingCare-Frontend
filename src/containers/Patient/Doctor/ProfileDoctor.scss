@@ -1,0 +1,27 @@
+
+.intro-doctor{
+    display: flex;
+    gap: 3em;
+    padding: 5px 0;
+
+    
+    .content-left{
+       
+        border-radius: 50%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 18%;
+        height: 125px;
+       
+    }
+    .content-right{
+        text-align: justify;
+        .up{
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        width: 75%;
+    }
+}
