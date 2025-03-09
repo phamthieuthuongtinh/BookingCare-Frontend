@@ -149,7 +149,7 @@ class ManageDoctor extends Component {
                 selectedProvince = listProvince.find(item => {
                     return item && item.value === provinceId
                 })
-                console.log('check find iten', selectedPayment, selectedPrice, selectedProvince);
+                // console.log('check find iten', selectedPayment, selectedPrice, selectedProvince);
             }
 
 

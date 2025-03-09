@@ -58,7 +58,7 @@ class ProfileDoctor extends Component {
             return (
                 <>
                     <div>{time} - {date}</div>
-                    <div>Miễn phí đặt lịch</div>
+                    <div><FormattedMessage id="patient.booking-modal.price-booking" /></div>
                 </>
             )
         }
@@ -72,7 +72,7 @@ class ProfileDoctor extends Component {
             nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName}`;
             nameEn = `${dataProfile.positionData.valueEn} ${dataProfile.firstName} ${dataProfile.lastName}`
         }
-        console.log('check state profile', this.state)
+        // console.log('check state profile', this.state)
         return (
             <React.Fragment>
                 <div className='intro-doctor'>

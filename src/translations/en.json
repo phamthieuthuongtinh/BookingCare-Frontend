@@ -78,6 +78,20 @@
             "see-detail":"See detail",
             "payment":"Patient can checkout by:",
             "hide-price":"Hide price table"
+        },
+        "booking-modal":{
+            "title":"Information booking",
+            "full-name":"Full Name",
+            "phone-number":"Phone Number",
+            "address":"Address",
+            "reason":"Reason",
+            "birthday":"Birthday",
+            "gender":"Gender",
+            "booking":"Confirm",
+            "cancel":"Cancel",
+            "email":"Email",
+            "price-booking":"Free booking"
+
         }
     },
     "admin":{

@@ -77,7 +77,7 @@ class DoctorSchedule extends Component {
             this.setState({
                 allAvalableTime: res.data ? res.data : []
             })
-            console.log(allDays)
+            // console.log(allDays)
         }
     }
     handleOnChangeSelect = async (event) => {
@@ -92,10 +92,11 @@ class DoctorSchedule extends Component {
                 })
 
             }
-            console.log('check res', res)
+            // console.log('check res', res)
         }
     }
     handleClickScheduleTime = (time) => {
+        // console.log('check res', time);
         this.setState({
 
             isOpenModalBooking: true,
