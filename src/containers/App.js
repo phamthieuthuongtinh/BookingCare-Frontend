@@ -20,6 +20,7 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import Doctor from '../routes/Doctor.js';
 import CustomScrollbars from '../components/CustomScrollbars.js';
+import VerifyEmail from './Patient/VerifyEmail.js';
 
 class App extends Component {
 
@@ -58,6 +59,7 @@ class App extends Component {
                                     <Route path={path.DOCTOR} component={userIsAuthenticated(Doctor)} />
                                     <Route path={path.HOMEPAGE} component={(HomePage)} />
                                     <Route path={path.DETAIL_DOCTOR} component={(DetailDoctor)} />
+                                    <Route path={path.VERIFY_EMAIL_BOOKING} component={(VerifyEmail)} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>
