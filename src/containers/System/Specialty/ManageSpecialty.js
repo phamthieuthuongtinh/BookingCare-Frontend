@@ -57,7 +57,14 @@ class ManageSpecialty extends Component {
     handleSaveNewSpecialty = async () => {
         let res = await createNewSpecialty(this.state);
         if (res && res.errCode === 0) {
+            this.setState({
+                name: '',
+                imageBase64: '',
+                descriptionHTML: '',
+                descriptionMarkdown: ''
+            })
             toast.success('Save infor specialty succeed');
+
         }
         else {
             toast.error('Save infor specialty failed');
@@ -86,7 +93,7 @@ class ManageSpecialty extends Component {
                                 style={{ height: '300px' }}
                                 renderHTML={text => mdParser.render(text)}
                                 onChange={this.handleEditorChange}
-                                value={this.state.contentMarkdown}
+                                value={this.state.descriptionMarkdown}
                             />
                         </div>
                         <div className='col-12'>

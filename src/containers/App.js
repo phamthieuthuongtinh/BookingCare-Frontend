@@ -16,6 +16,7 @@ import Header from './Header/Header';
 import System from '../routes/System';
 import HomePage from './HomePage/HomePage.js';
 import DetailDoctor from './Patient/Doctor/DetailDoctor.js';
+import DetailSpecialty from './Patient/Specialty/DetailSpecialty.js';
 import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import Doctor from '../routes/Doctor.js';
@@ -59,6 +60,7 @@ class App extends Component {
                                     <Route path={path.DOCTOR} component={userIsAuthenticated(Doctor)} />
                                     <Route path={path.HOMEPAGE} component={(HomePage)} />
                                     <Route path={path.DETAIL_DOCTOR} component={(DetailDoctor)} />
+                                    <Route path={path.DETAIL_SPECIALTY} component={(DetailSpecialty)} />
                                     <Route path={path.VERIFY_EMAIL_BOOKING} component={(VerifyEmail)} />
                                 </Switch>
                             </CustomScrollbars>

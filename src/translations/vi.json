@@ -58,6 +58,7 @@
     },
     "homepage":{
         "see-more":"Xem thêm",
+        "specialties":"Chuyên khoa nổi bật",
         "outstanding-doctor":"Bác sĩ nổi bật tuần qua"
     },
     "manage-schedule":{
@@ -100,6 +101,8 @@
         "manage-doctor":{
             "title":"Thêm thông tin bác sĩ",
             "choose-doctor":"Chọn bác sĩ",
+            "choose-specialty":"Chọn chuyên khoa",
+            "choose-clinic":"Chọn phòng khám",
             "intro":"Giới thiệu bác sĩ",
             "save":"Lưu",
             "update":"Cập nhật",

@@ -44,7 +44,7 @@ class DoctorExtraInfor extends Component {
 
         let { language } = this.props;
         let { isShowDetailInfor, extraInfor } = this.state;
-        // console.log(extraInfor)
+        console.log('check extra ìnor', extraInfor)
         return (
             <React.Fragment>
                 <div className='doctor-extra-infor-container'>
@@ -114,7 +114,9 @@ class DoctorExtraInfor extends Component {
 
 
                                 </div>
-                                <div className='payment'><FormattedMessage id="patient.extra-infor-doctor.payment" /> {extraInfor && extraInfor.paymentTypeData && language === languages.VI ? extraInfor.paymentTypeData.valueVi : extraInfor.paymentTypeData.valueEn}</div>
+                                <div className='payment'><FormattedMessage id="patient.extra-infor-doctor.payment" /> {language === languages.VI
+                                    ? extraInfor?.paymentTypeData?.valueVi || ""
+                                    : extraInfor?.paymentTypeData?.valueEn || ""}</div>
                                 <div className='hide-price'>
                                     <span onClick={() => this.showHideDetailInfor(false)}><FormattedMessage id="patient.extra-infor-doctor.hide-price" /></span>
                                 </div>

@@ -57,6 +57,7 @@
     },
     "homepage":{
         "see-more":"See More",
+        "specialties":"Outstanding Specialties",
         "outstanding-doctor":"Outstanding Doctors of the Week"
     },
     "manage-schedule":{
@@ -98,6 +99,8 @@
         "manage-doctor":{
             "title":"Add doctor information",
             "choose-doctor":"Choose doctor",
+            "choose-specialty":"Choose specialty",
+            "choose-clinic":"Choose clinic",
             "intro":"Introduction doctor",
             "save":"Save",
             "update":"Update",
