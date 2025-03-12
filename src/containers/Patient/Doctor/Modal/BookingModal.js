@@ -155,7 +155,7 @@ class BookingModal extends Component {
         if (dataTime && !_.isEmpty(dataTime)) {
             doctorId = dataTime.doctorId
         }
-        console.log('check state', dataTime);
+        // console.log('check state', dataTime);
         return (
             // toggle={ }
             <React.Fragment>
@@ -183,6 +183,8 @@ class BookingModal extends Component {
                                 <ProfileDoctor
                                     doctorId={doctorId}
                                     isShowDescription={false}
+                                    isShowPrice={true}
+                                    isShowLinkDetail={false}
                                     dataTime={dataTime}
                                 />
                             </div>

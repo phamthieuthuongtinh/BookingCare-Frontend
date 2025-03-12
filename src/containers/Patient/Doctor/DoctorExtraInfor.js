@@ -16,8 +16,14 @@ class DoctorExtraInfor extends Component {
             extraInfor: {}
         }
     }
-    componentDidMount() {
-
+    async componentDidMount() {
+        if (this.props.doctorIdFromParent) {
+            let data = await getExtraInforDoctorByIdService(this.props.doctorIdFromParent);
+            if (data && data.errCode === 0)
+                this.setState({
+                    extraInfor: data.data
+                })
+        }
 
     }
 
@@ -44,7 +50,7 @@ class DoctorExtraInfor extends Component {
 
         let { language } = this.props;
         let { isShowDetailInfor, extraInfor } = this.state;
-        console.log('check extra ìnor', extraInfor)
+        // console.log('check extra ìnor', extraInfor)
         return (
             <React.Fragment>
                 <div className='doctor-extra-infor-container'>
