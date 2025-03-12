@@ -56,7 +56,7 @@
       
         .section-customize{
             padding-right: 10px;
-           
+           cursor: pointer;
             .bg-img{
                 height: 200px;
                 width: 100%;
@@ -70,9 +70,9 @@
                 // &.section-specialty{
                 //     background-image: url("../../assets/specialty/specialty1.jpg");
                 // }
-                &.section-medical-facility{
-                    background-image: url("../../assets/facility/facility1.jpg");
-                }
+                // &.section-medical-facility{
+                //     background-image: url("../../assets/facility/facility1.jpg");
+                // }
                 &.section-outstanding-doctor{
                     // background-image: url("../../assets/doctor/doctor.jpg");
                     width: 120px;

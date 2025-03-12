@@ -4,9 +4,11 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import UserManage from '../containers/System/UserManage';
 import UserRedux from '../containers/System/Admin/UserRedux';
 import ManageDoctor from '../containers/System/Admin/ManageDoctor';
+import ManagePatient from '../containers/System/Doctor/ManagePatient';
 // import RegisterPackageGroupOrAcc from '../containers/System/RegisterPackageGroupOrAcc';
 import Header from '../containers/Header/Header';
 import ManageSchedule from '../containers/System/Doctor/ManageSchedule';
+import { omit } from 'lodash';
 class System extends Component {
     render() {
 
@@ -18,6 +20,7 @@ class System extends Component {
                     <div className="system-list">
                         <Switch>
                             <Route path="/doctor/manage-schedule" component={ManageSchedule} />
+                            <Route path="/doctor/manage-patient" component={ManagePatient} />
 
                         </Switch>
                     </div>
